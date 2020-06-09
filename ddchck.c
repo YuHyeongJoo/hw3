@@ -107,7 +107,7 @@ int main(){
 		}
 	
 	}
-	int fd = open("ddtrace", O_RDONLY | O_SYNC) ;
+	int fd = open(".ddtrace", O_RDONLY | O_SYNC) ;
 	int id, addr,iden;
 	while(1){
 		to=-1; from=-1;

@@ -10,20 +10,20 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-pthread_mutex_t t;
+pthread_mutex_t k,t;
 
 void *fun(void *data){
-	pthread_mutex_lock(&t);
-	 printf("lock\n");
+	pthread_mutex_lock(&k);
 	sleep(3);
-        pthread_mutex_unlock(&t);
+        pthread_mutex_unlock(&k);
 
 }
 
 void *fun2(void *data){
         pthread_mutex_lock(&t);
-         printf("lock2\n");
         pthread_mutex_unlock(&t);
+	pthread_mutex_lock(&k);
+	pthread_mutex_unlock(&k);
 
 }
 
@@ -33,6 +33,7 @@ void *fun2(void *data){
 int main(){
 	pthread_t a,b;
 	pthread_create(&a,NULL,fun,NULL);
+	sleep(1);
 	pthread_create(&b,NULL,fun2,NULL);
 	pthread_join(a, NULL);
 	pthread_join(b,NULL);

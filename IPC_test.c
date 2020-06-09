@@ -6,27 +6,31 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-
-int 
-main ()
+int arr[5]={0,0,0,0,0};
+int o=0;
+int main ()
 {
-	int fd = open("channel", O_RDONLY | O_SYNC) ;
+	int fd = open(".ddtrace", O_RDONLY | O_SYNC ) ;
 
 	char s[128] ;
-	int k,sum=0;
-	while(1){
-		int y;
-		read(fd,&y,4);	
-		if(y==-1) {
-                        sum++;
-                        break;
-                }
+	int k;
 	
+		int sum, y;
+	while(1){
+//		sum =-10;
+//		while(sum==-10){
+//			read(fd,&sum,4);
+//		}
+	o++;
+		read(fd,&y,4);
+		read(fd,&y,4);	
+		printf("first: %d\n",y);	
+		read(fd,&k,4);	
+		printf("second :%d\n",k);
 		read(fd,&k,4);
 		printf("%d is received\n",k);
-		sum= sum+k;
+
 	}
-	printf("%d\n",sum);
 	close(fd) ;
 	return 0 ;
 }

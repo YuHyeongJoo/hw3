@@ -30,8 +30,8 @@ main ()
 		int u =10;	
 		 write(fd,&u , 4) ;
 		write(fd,&i,4);
+		write(fd,&i,4);
 		printf("%d is sended\n",i);
-		sleep(1);
 	}
 	int k=-1;
 	write(fd,&k,4);
