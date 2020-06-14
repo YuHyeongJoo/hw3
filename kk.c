@@ -10,4 +10,7 @@ void fun(pthread_mutex_t *mu){
 int main(){
 	pthread_mutex_t t;
 	fun(&t);
+	fun(&t);
+	return 0;
+
 }
